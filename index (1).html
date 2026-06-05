@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bellemark Systems — Stop Losing Leads</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .hero, .pain-band, .section, .cta-band, .footer, .choa-section { page-break-inside: avoid; break-inside: avoid; }
+    .cards, .steps, .trust-row, .pricing-box, .choa-inner { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a2e;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #0f1923;
+    padding: 44px 64px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: #38bdf8;
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 44px;
+  }
+  .brand {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #ffffff;
+  }
+  .hero-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .hero-url {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .hero-url:hover { color: #38bdf8; }
+  .badge {
+    background: transparent;
+    border: 1.5px solid #38bdf8;
+    color: #38bdf8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 7px 16px;
+    border-radius: 3px;
+  }
+  .hero h1 {
+    font-size: 50px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.08;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 span { color: #38bdf8; }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+
+  /* ── PAIN BAND ── */
+  .pain-band {
+    background: #162030;
+    padding: 36px 64px;
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    border-top: 1px solid rgba(56,189,248,0.12);
+    border-bottom: 1px solid rgba(56,189,248,0.12);
+  }
+  .pain-stat { text-align: center; flex-shrink: 0; }
+  .pain-num {
+    font-size: 60px;
+    font-weight: 900;
+    color: #38bdf8;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .pain-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 6px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+  .pain-divider {
+    width: 1px;
+    height: 64px;
+    background: rgba(56,189,248,0.18);
+    flex-shrink: 0;
+  }
+  .pain-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+  }
+  .pain-desc strong { color: #ffffff; font-weight: 700; }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 56px 64px;
+    border-bottom: 1px solid #e8ecf0;
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #38bdf8;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .section h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f1923;
+    margin-bottom: 36px;
+    letter-spacing: -0.3px;
+  }
+
+  /* ── SERVICE CARDS ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .card {
+    border: 1px solid #dde3ea;
+    border-radius: 8px;
+    padding: 28px 24px;
+    position: relative;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: #38bdf8;
+    border-radius: 8px 8px 0 0;
+    opacity: 0.5;
+  }
+  .card-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f1923;
+    margin-bottom: 10px;
+  }
+  .card p {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.65;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 8px;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 21px;
+    left: 16.67%;
+    right: 16.67%;
+    height: 1px;
+    background: #dde3ea;
+  }
+  .step { text-align: center; padding: 0 24px; }
+  .step-num {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid #38bdf8;
+    color: #38bdf8;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+  }
+  .step h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f1923;
+    margin-bottom: 10px;
+  }
+  .step p { font-size: 13px; color: #6b7280; line-height: 1.65; }
+
+  /* ── PRICING ── */
+  .pricing-box {
+    background: #f4f8ff;
+    border: 1px solid #c7dcf8;
+    border-radius: 10px;
+    padding: 40px 44px;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+  .pricing-left {
+    flex: 3;
+    padding-right: 44px;
+    border-right: 1px solid #c7dcf8;
+  }
+  .pricing-left .lead {
+    font-size: 14px;
+    color: #374151;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .include-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #4b5563;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .include-item::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #38bdf8;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='white' d='M6.5 11.5L3 8l1.06-1.06L6.5 9.38l5.44-5.44L13 5l-6.5 6.5z'/%3E%3C/svg%3E");
+    background-size: cover;
+  }
+  .pricing-right {
+    flex: 2;
+    padding-left: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .expect-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .expect-item {
+    font-size: 13px;
+    color: #374151;
+    padding: 9px 0;
+    border-bottom: 1px solid #dde8f5;
+    line-height: 1.4;
+  }
+  .expect-item:last-of-type { border-bottom: none; }
+  .pricing-note {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #38bdf8;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  /* ── WHY BELLEMARK ── */
+  .trust-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .trust-item {
+    padding: 32px 24px;
+    border: 1px solid #dde3ea;
+    border-radius: 8px;
+    position: relative;
+  }
+  .trust-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #f0f7ff;
+    border: 1px solid #c7dcf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .trust-icon-wrap svg { width: 20px; height: 20px; }
+  .trust-item h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f1923;
+    margin-bottom: 8px;
+  }
+  .trust-item p { font-size: 13px; color: #6b7280; line-height: 1.65; }
+
+  /* ── CHOA SECTION ── */
+  .choa-section {
+    background: #f8faff;
+    padding: 56px 64px;
+    border-top: 1px solid #e8ecf0;
+  }
+  .choa-inner {
+    display: flex;
+    gap: 48px;
+    align-items: stretch;
+    margin-top: 28px;
+  }
+  .choa-copy { flex: 3; }
+  .choa-copy .choa-lead {
+    font-size: 15px;
+    color: #1f2937;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .choa-copy .choa-lead strong { color: #0f1923; }
+  .choa-copy .choa-body {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.8;
+  }
+  .choa-card {
+    flex: 1.5;
+    background: #0f1923;
+    border-radius: 10px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(56,189,248,0.15);
+  }
+  .choa-pct {
+    font-size: 56px;
+    font-weight: 900;
+    color: #38bdf8;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .choa-pct-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+  .choa-divider {
+    width: 32px;
+    height: 1px;
+    background: rgba(56,189,248,0.25);
+    margin: 22px auto;
+  }
+  .choa-org {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: #0f1923;
+    padding: 48px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: rgba(56,189,248,0.15);
+  }
+  .cta-left h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .cta-left p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    max-width: 460px;
+  }
+  .cta-right { text-align: right; flex-shrink: 0; }
+  .cta-url {
+    font-size: 17px;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 8px;
+    text-decoration: none;
+  }
+  .cta-url:hover { text-decoration: underline; }
+  .cta-contact {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #090e14;
+    padding: 18px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(56,189,248,0.08);
+  }
+  .footer-brand {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.2);
+  }
+  .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-url {
+    font-size: 11px;
+    color: rgba(56,189,248,0.4);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  .footer-tagline {
+    font-size: 10px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="brand">BELLEMARK SYSTEMS</div>
+    <div class="hero-right">
+      <a href="https://bellemarkstudio.com" class="hero-url" target="_blank">bellemarkstudio.com</a>
+      <div class="badge">CUSTOMER CAPTURE SYSTEM</div>
+    </div>
+  </div>
+  <h1>You're losing customers<br>every time your <span>phone rings</span><br>and nobody answers.</h1>
+  <p class="hero-sub">Bellemark installs an automated response system that captures every missed call, qualifies every website visitor, and follows up with every lead — so you close more jobs without changing how you work.</p>
+</div>
+
+<!-- PAIN BAND -->
+<div class="pain-band">
+  <div class="pain-stat">
+    <div class="pain-num">62%</div>
+    <div class="pain-sub">OF CALLERS WON'T CALL BACK</div>
+  </div>
+  <div class="pain-divider"></div>
+  <div class="pain-desc">
+    When a homeowner calls for a quote and hits voicemail, <strong>they move on to the next contractor within 90 seconds.</strong> That's a $3,000–$15,000 job you'll never know you lost. Bellemark texts them back automatically — before they dial someone else.
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section">
+  <div class="section-label">WHAT WE INSTALL</div>
+  <h2>Three systems. One setup. Runs automatically.</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-num">01 &nbsp;·&nbsp; MISSED-CALL TEXT-BACK</div>
+      <h3>Never lose a caller again</h3>
+      <p>The moment a call goes unanswered, your system texts the customer within seconds — keeping them engaged until you're free to talk.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">02 &nbsp;·&nbsp; WEBSITE CHAT WIDGET</div>
+      <h3>Capture leads around the clock</h3>
+      <p>Your chat widget answers questions, collects contact info, and qualifies visitors 24/7 — even while you're on a job site.</p>
+    </div>
+    <div class="card">
+      <div class="card-num">03 &nbsp;·&nbsp; SMART RECEPTIONIST</div>
+      <h3>Handle every inbound call</h3>
+      <p>Greets callers, answers common questions, logs every inquiry, and routes urgent requests so nothing slips through the cracks.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <div class="section-label">HOW IT WORKS</div>
+  <h2>Set up once. Works forever.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>We build your system</h4>
+      <p>Custom-configured for your business, your hours, and your services. One-time setup — no tech skills required from you.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>It runs on its own</h4>
+      <p>Missed calls get texted back. Website visitors get captured. Every lead gets logged. You just show up to the jobs.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>You close more work</h4>
+      <p>You stop losing leads you never knew existed and start converting customers your competitors are missing.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="section">
+  <div class="section-label">PRICING</div>
+  <h2>Tailored to your business. No contracts.</h2>
+  <div class="pricing-box">
+    <div class="pricing-left">
+      <p class="lead">Pricing is built around your business — not a one-size-fits-all number. Every setup includes:</p>
+      <div class="include-item">Missed-call text-back system</div>
+      <div class="include-item">24/7 website chat widget</div>
+      <div class="include-item">Smart receptionist setup</div>
+      <div class="include-item">Lead notifications straight to your phone</div>
+      <div class="include-item">Ongoing support and monitoring</div>
+    </div>
+    <div class="pricing-right">
+      <div class="expect-title">What to expect</div>
+      <div class="expect-item">One-time setup fee</div>
+      <div class="expect-item">Monthly service fee</div>
+      <div class="expect-item">Cancel anytime</div>
+      <div class="expect-item">No long-term contracts</div>
+      <p class="pricing-note">We'll walk through what makes sense for your call volume and goals.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHY BELLEMARK -->
+<div class="section">
+  <div class="section-label">WHY BELLEMARK</div>
+  <h2>Built for contractors. Not corporate offices.</h2>
+  <div class="trust-row">
+    <div class="trust-item">
+      <div class="trust-icon-wrap">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="9" stroke="#38bdf8" stroke-width="1.5"/>
+          <path d="M10 5v5l3 3" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h4>Runs while you work</h4>
+      <p>Your system is active 24/7 — capturing leads while you're on roofs, in crawl spaces, or finishing a job. Nothing falls through.</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon-wrap">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="3" width="12" height="14" rx="2" stroke="#38bdf8" stroke-width="1.5"/>
+          <path d="M7 7h6M7 10h6M7 13h4" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h4>No contracts</h4>
+      <p>Month-to-month only. If it's not working for you, cancel. No fine print, no cancellation fees, no questions asked.</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon-wrap">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="2" width="10" height="16" rx="2" stroke="#38bdf8" stroke-width="1.5"/>
+          <circle cx="10" cy="15" r="1" fill="#38bdf8"/>
+          <path d="M8 5h4" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h4>Everything goes to your phone</h4>
+      <p>New leads and missed call alerts notify you instantly — no dashboard to log into, no software to learn.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHOA SECTION -->
+<div class="choa-section">
+  <div class="section-label">GIVING BACK</div>
+  <h2 style="font-size:26px; font-weight:800; color:#0f1923; letter-spacing:-0.3px;">Every client helps a child get better care.</h2>
+  <div class="choa-inner">
+    <div class="choa-copy">
+      <p class="choa-lead"><strong>5% of every monthly payment goes directly to Children's Healthcare of Atlanta (CHOA)</strong> — one of the top-ranked pediatric hospital systems in the country.</p>
+      <p class="choa-body">When you work with Bellemark, you're not just investing in your business. A portion of what you pay every month goes toward children who need medical care. There's no extra cost to you and no action required — it happens automatically with every payment, every month, for as long as you're a client.</p>
+    </div>
+    <div class="choa-card">
+      <div class="choa-pct">5%</div>
+      <div class="choa-pct-label">of every monthly payment</div>
+      <div class="choa-divider"></div>
+      <div class="choa-org">Children's Healthcare<br>of Atlanta</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="cta-left">
+    <h3>Book a free 15-minute demo.</h3>
+    <p>We'll show you exactly what your system would look like — built around your business — before you spend a dollar.</p>
+  </div>
+  <div class="cta-right">
+    <a href="https://bellemarkstudio.com" class="cta-url" target="_blank">bellemarkstudio.com</a>
+    <div class="cta-contact">678-630-1321 &nbsp;·&nbsp; bellemarkstudio@gmail.com</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">BELLEMARK SYSTEMS</div>
+  <div class="footer-right">
+    <a href="https://bellemarkstudio.com" class="footer-url" target="_blank">bellemarkstudio.com</a>
+    <div class="footer-tagline">AUTOMATED LEAD CAPTURE &amp; CUSTOMER RESPONSE</div>
+  </div>
+</div>
+
+</body>
+</html>
